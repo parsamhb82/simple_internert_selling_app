@@ -22,7 +22,7 @@ def all_bought_internet(request):
     for costumer in costumers:
             internet_list.append({
             'name': costumer.name,
-            'bought_internet': costumer.bought_internet.all(),
+            'bought_internet': list(costumer.bought_internet.all().values())
         }
         )
     json_data = json.dumps(internet_list)  
