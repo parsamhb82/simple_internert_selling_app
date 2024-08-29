@@ -1,3 +1,7 @@
-from django.contrib import admin
+from django.contrib.admin import register, ModelAdmin
 
-# Register your models here.
+from costumer.models import Costumer
+
+@register(Costumer)
+class CostumerAdmin(ModelAdmin):
+    pass

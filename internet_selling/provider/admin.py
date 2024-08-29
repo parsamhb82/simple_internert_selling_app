@@ -1,3 +1,7 @@
-from django.contrib import admin
+from django.contrib.admin import register, ModelAdmin
+from provider.models import Provider
 
-# Register your models here.
+@register(Provider)
+class ProviderAdmin(ModelAdmin):
+    pass
+

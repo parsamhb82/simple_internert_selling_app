@@ -22,9 +22,9 @@ def add_internet(request):
         name = data['name']
         price = data['price']
         provider = Provider.objects.get(id=data['provider_id'])
-        internet = Internet.objects.create(name=name, price=price)
-        provider.objects.add(internet)
-        provider.save()
+        if provider.is_active == False:
+            return JsonResponse({'status': 'error'}, safe=False)
+        internet = Internet.objects.create(name=name, price=price, provider=provider)
         return JsonResponse({'status': 'success'}, safe=False)
     else:
-        return JsonResponse('error', safe=False)
+        return JsonResponse({'status' : 'error'}, safe=False)

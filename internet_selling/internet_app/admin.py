@@ -1,3 +1,9 @@
-from django.contrib import admin
+from django.contrib.admin import ModelAdmin, register
 
-# Register your models here.
+from internet_app.models import Internet
+
+@register(Internet)
+class InternetAdmin(ModelAdmin):
+    pass
+
+
